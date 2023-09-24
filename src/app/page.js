@@ -1,6 +1,6 @@
 import CardList from '@/components/CardList'
 import Featured from '@/components/Featured'
-import CategoryList from '@/components/categoryList'
+import CategoryList from '@/components/CategoryList'
 import  Menu from '@/components/Menu'
 
 export default function Home() {

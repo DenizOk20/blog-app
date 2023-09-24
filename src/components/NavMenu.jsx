@@ -1,5 +1,5 @@
 "use client"
-import social from '@/data'
+import social from '@/datas/data'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -7,7 +7,7 @@ import { useState } from 'react'
 import ThemeColor from './ThemeColor'
 
 const NavMenu = () => {
-    const user = 'true'
+    const user = 'false'
     const [open, setOpen] = useState(false)
     return (
       <div className='flex gap-3'>
@@ -17,7 +17,7 @@ const NavMenu = () => {
             : 
             <Image src="/menu.png" alt='menu' width={20} height={20} className='cursor-pointer' onClick={() => setOpen(true)}/>
         }
-        {open &&  <div className='absolute left-0 w-full h-[calc(100vh-3rem)] z-10 bg-neutral-400 flex flex-col
+        {open &&  <div className='absolute left-0 bottom-0 w-full h-[calc(100vh-3rem)] bg-neutral-400 flex flex-col
          p-10 gap-3'>
             <div className='flex flex-row p-3 justify-center gap-3'>
               { social.map(item => (

@@ -1,4 +1,4 @@
-import social from '@/data'
+import social from '@/datas/data'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -9,7 +9,7 @@ const Navbar = () => {
     const user = 'false'
   return (
     <div className='h-12 flex p-4 justify-between items-center md:px-20 xl:px-40 border-b-2 border-b-fuchsia-100'>
-        <div className=' hidden md:flex p-2'>
+        <div className='hidden md:flex p-2'>
             { social.map(item => (
                 <Link key={item.id} href={item.url} className='p-2'>
                     <Image alt='' src={item.img} width={20} height={20}/>
@@ -17,7 +17,7 @@ const Navbar = () => {
             ))
             }
         </div>
-        <div className=''>
+        <div>
             <Link className='text-xl font-bold' href="/">denizblog</Link>
         </div>
 
