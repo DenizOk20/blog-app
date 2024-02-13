@@ -1,3 +1,4 @@
+import Comments from '@/components/Comments'
 import Menu from '@/components/Menu'
 import ReadMore from '@/components/ReadMore'
 import Image from 'next/image'
@@ -41,14 +42,10 @@ const singlePage = () => {
                  quasi tempora dicta aperiam. Odit quasi nesciunt at distinctio itaque rem minima temporibus quae.
                  </ReadMore>
                  <div className=''>
-                    <h2 className='font-bold pt-3'>Comments</h2>
-                    <div className='flex gap-5 pt-3'>
-                        <input type="text" name="" id="" className='border-2 focus:outline-none px-2 w-2/3'/>
-                        <button className='bg-green-700 text-white px-3 py-1 rounded-md'>Share</button>
-                    </div>
+                    <Comments/>
                  </div>
             </div>
-                <Menu/>
+            <Menu/>
         </div>
     </div>
   )

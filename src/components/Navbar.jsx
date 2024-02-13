@@ -6,7 +6,7 @@ import NavMenu from './NavMenu'
 import ThemeColor from './ThemeColor'
 
 const Navbar = () => {
-    const user = 'false'
+    const user = 'true'
   return (
     <div className='h-12 flex p-4 justify-between items-center md:px-20 xl:px-40 border-b-2 border-b-fuchsia-100'>
         <div className='hidden md:flex p-2'>
