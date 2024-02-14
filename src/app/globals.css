@@ -12,3 +12,19 @@
     background-color: white;
     color: black;
 }
+
+.ql-container{
+    font-size: 28px !important;
+    height: calc(100vh - 48px) !important;
+}
+
+.quill > .ql-container > .ql-editor.ql-blank::before{
+    color: #b3b3b1;
+}
+
+
+@media screen and (min-width: 767px) {
+    .quill > .ql-container > .ql-editor.ql-blank::before {
+      font-size: 32px;
+    }
+  }
