@@ -7,7 +7,7 @@ import { useState } from 'react'
 import ThemeColor from './ThemeColor'
 
 const NavMenu = () => {
-    const user = 'false'
+    const status = 'false'
     const [open, setOpen] = useState(false)
     return (
       <div className='flex gap-3'>
@@ -31,10 +31,10 @@ const NavMenu = () => {
               <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/">Home</Link>
               <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/">Contact</Link>
               <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/">About</Link>
-              {user === 'false' ? (<Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/">Login</Link>) :
+              {status === 'false' ? (<Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/">Login</Link>) :
              ( <div className='flex flex-col gap-8'>
-                    <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/">Write</Link>
-                    <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/">Logout</Link>
+                    <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/write">Write</Link>
+                    <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' >Logout</Link>
                 </div>) 
                 } 
             </div>

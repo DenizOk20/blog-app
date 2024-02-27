@@ -4,6 +4,8 @@ import Link from 'next/link'
 import React from 'react'
 import NavMenu from './NavMenu'
 import ThemeColor from './ThemeColor'
+import { signOut } from 'next-auth/react'
+import Logout from './Logout'
 
 const Navbar = () => {
     const user = 'true'
@@ -29,7 +31,7 @@ const Navbar = () => {
             {user === 'false' ? (<Link className='p-2' href="/">Login</Link>) :
              ( <div className='flex'>
                     <Link className='p-2' href="/">Write</Link>
-                    <Link className='p-2' href="/">Logout</Link>
+                    <Logout/>
                 </div>) 
             } 
         </div>
