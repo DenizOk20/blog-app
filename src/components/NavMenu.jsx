@@ -5,10 +5,17 @@ import Link from 'next/link'
 import React from 'react'
 import { useState } from 'react'
 import ThemeColor from './ThemeColor'
+import { signOut, useSession } from 'next-auth/react'
 
 const NavMenu = () => {
-    const status = 'false'
+    const {status} = useSession()
     const [open, setOpen] = useState(false)
+
+    const handleLogout = () => {
+      setOpen(false)
+      signOut()
+    }
+
     return (
       <div className='flex gap-3'>
         <ThemeColor/>
@@ -31,10 +38,10 @@ const NavMenu = () => {
               <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/">Home</Link>
               <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/">Contact</Link>
               <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/">About</Link>
-              {status === 'false' ? (<Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/">Login</Link>) :
+              {status === "unauthenticated" ? (<Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/login">Login</Link>) :
              ( <div className='flex flex-col gap-8'>
                     <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/write">Write</Link>
-                    <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' >Logout</Link>
+                    <Link onClick={handleLogout} className='text-xl font-bold text-fuchsia-100' href="/" >Logout</Link>
                 </div>) 
                 } 
             </div>

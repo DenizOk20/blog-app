@@ -6,9 +6,10 @@ import NavMenu from './NavMenu'
 import ThemeColor from './ThemeColor'
 import { signOut } from 'next-auth/react'
 import Logout from './Logout'
+import UserStatus from './UserStatus'
 
 const Navbar = () => {
-    const user = 'true'
+    const user = "true"
   return (
     <div className='h-12 flex p-4 justify-between items-center md:px-20 xl:px-40 border-b-2 border-b-fuchsia-100'>
         <div className='hidden md:flex p-2'>
@@ -25,17 +26,9 @@ const Navbar = () => {
 
         <div className='hidden md:flex items-center'>
             <ThemeColor/>
-            <Link className='p-2' href="/">Home</Link>
-            <Link className='p-2' href="/">Contact</Link>
-            <Link className='p-2' href="/">About</Link>
-            {user === 'false' ? (<Link className='p-2' href="/">Login</Link>) :
-             ( <div className='flex'>
-                    <Link className='p-2' href="/">Write</Link>
-                    <Logout/>
-                </div>) 
-            } 
+            <UserStatus/>
         </div>
-        <div className='md:hidden'>
+        <div className='md:hidden z-20'>
             <NavMenu/>
         </div>
     </div>
