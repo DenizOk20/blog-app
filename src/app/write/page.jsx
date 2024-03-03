@@ -1,12 +1,29 @@
 "use client"
+import { useSession } from 'next-auth/react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import ReactQuill from 'react-quill'
 import "react-quill/dist/quill.bubble.css"
 
 const WritePage = () => {
+
     const [open,setOpen] = useState(false)
     const [value,setValue] = useState("")
+
+    const router = useRouter();
+
+    const {status} = useSession()
+    console.log(status)
+
+    if(status === "loading"){
+        return <div>Loading...</div>
+    }
+    if (status=== "unauthenticated"){
+        router.push('/')
+    }
+
+
   return (
     <div className='p-4 md:px-20 xl:px-40 flex flex-col gap-4 md:gap-6'>
         <input type="text" placeholder='Title' className='p-7 outline-none text-3xl md:text-4xl lg:text-5xl bg-transparent border-none placeholder:text-[#b3b3b1]'/>
