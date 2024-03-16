@@ -44,7 +44,7 @@ const singlePage = async ({params}) => {
 
                 </div>
                  <div className=''>
-                    <Comments/>
+                    <Comments postSlug={slug}/>
                  </div>
             </div>
             <Menu/>

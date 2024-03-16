@@ -1,9 +1,29 @@
+"use client"
+import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import useSWR from 'swr'
 
-const Comments = () => {
-    const status = "authenticated"
+const Comments = ({postSlug}) => {
+
+    const fetcher = async (url) => {
+        const res = await fetch(url)
+
+        const data = await res.json()
+
+        if(!res.ok){
+            const error = new Error(data.message)
+            throw error
+        }
+
+        return data
+    }
+
+    const {status} = useSession()
+    console.log(status)
+    const {data,isLoading} = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}`,
+     fetcher)
   return (
     <div>
         <h2 className='font-bold pt-3'>Comments</h2>
@@ -15,42 +35,21 @@ const Comments = () => {
         :
         (<Link href="/login">Login to write a comment</Link>)
         }
-        <div className='pt-6'>
+
+        {isLoading ? "Loading..." : data.map(item => (  
+            <div key={item._id} className='pt-6'>
             <div className='flex flex-col gap-3'>
                 <div className='flex gap-2 items-center'>
-                    <Image src="/p1.jpeg" alt='profile-photo' width={50} height={50} className='w-12 h-12 rounded-full object-cover'/>
+                    {item?.user?.image && <Image src={item.user.image} alt='profile-photo' width={50} height={50} className='w-12 h-12 rounded-full object-cover'/>}
                     <div className='flex flex-col text-gray-600'>
-                        <span className='font-medium'>Deniz Ök</span>
-                        <span className='text-sm'>13.02.2024</span>
+                        <span className='font-medium'>{item.user.name}</span>
+                        <span className='text-sm'>{item.createdAt.substring(0,10)}</span>
                     </div>
                 </div>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, obcaecati! lor</p>
+                <p>{item.desc}</p>
             </div>
         </div>
-        <div className='pt-6'>
-            <div className='flex flex-col gap-3'>
-                <div className='flex gap-2 items-center'>
-                    <Image src="/p1.jpeg" alt='profile-photo' width={50} height={50} className='w-12 h-12 rounded-full object-cover'/>
-                    <div className='flex flex-col text-gray-600'>
-                        <span className='font-medium'>Deniz Ök</span>
-                        <span className='text-sm'>13.02.2024</span>
-                    </div>
-                </div>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, obcaecati! lor</p>
-            </div>
-        </div>
-        <div className='pt-6'>
-            <div className='flex flex-col gap-3'>
-                <div className='flex gap-2 items-center'>
-                    <Image src="/p1.jpeg" alt='profile-photo' width={50} height={50} className='w-12 h-12 rounded-full object-cover'/>
-                    <div className='flex flex-col text-gray-600'>
-                        <span className='font-medium'>Deniz Ök</span>
-                        <span className='text-sm'>13.02.2024</span>
-                    </div>
-                </div>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, obcaecati! lor</p>
-            </div>
-        </div>
+        ))}
     </div>
   )
 }
