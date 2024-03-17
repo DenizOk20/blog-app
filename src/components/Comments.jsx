@@ -2,7 +2,7 @@
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import useSWR from 'swr'
 
 const Comments = ({postSlug}) => {
@@ -21,16 +21,26 @@ const Comments = ({postSlug}) => {
     }
 
     const {status} = useSession()
-    console.log(status)
-    const {data,isLoading} = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}`,
+
+    const {data,mutate,isLoading} = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}`,
      fetcher)
+
+     const [desc,setDesc] = useState("")
+
+    const handleSubmit = async () => {
+        await fetch("/api/comments", {
+            method: "POST",
+            body: JSON.stringify({desc, postSlug})
+        })
+        mutate()
+    }
   return (
     <div>
         <h2 className='font-bold pt-3'>Comments</h2>
         {status === "authenticated" ? 
         (<div className='flex flex-row gap-3 pt-2'>
-            <textarea placeholder='Write something..' className='px-2 border-2 focus:outline-none w-2/3 md:w-4/5'></textarea>
-            <button className='bg-green-700 text-white px-3 py-1 rounded-md max-h-12'>Share</button>
+            <textarea onChange={(e) => setDesc(e.target.value)} placeholder='Write something..' className='px-2 border-2 focus:outline-none w-2/3 md:w-4/5'></textarea>
+            <button onClick={handleSubmit} className='bg-green-700 text-white px-3 py-1 rounded-md max-h-12'>Share</button>
         </div>)
         :
         (<Link href="/login">Login to write a comment</Link>)
