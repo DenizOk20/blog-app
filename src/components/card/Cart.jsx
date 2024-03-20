@@ -15,7 +15,7 @@ const Cart = ({key,item}) => {
                 <span className='text-red-400'>{item.catSlug}</span>
             </div>
             <Link href={`/posts/${item.slug}`} className='font-bold text-xl'>{item.title}</Link>
-            <p>{item.desc}</p>
+            <div dangerouslySetInnerHTML={{__html:item?.desc.substring(0,60)}} />
             <Link href={`/posts/${item.slug}`} className='text-left py-2 underline underline-offset-2 decoration-red-400'>Read More</Link>
         </div>
     </div>

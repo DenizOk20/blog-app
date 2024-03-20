@@ -35,7 +35,7 @@ const singlePage = async ({params}) => {
                 </div>
             </div>
             {data?.img && <div className='relative h-2/3 w-full md:h-full lg:w-1/2'>
-                <Image alt='' src="/p1.jpeg" fill className='w-full rounded-md object-cover'/>
+                <Image alt='' src={data.img} fill className='w-full rounded-md object-cover'/>
             </div>}
         </div>
         <div className='flex flex-col lg:flex-row pt-10'>
