@@ -1,6 +1,7 @@
 import Comments from '@/components/Comments'
 import Menu from '@/components/Menu'
 import ReadMore from '@/components/ReadMore'
+import prisma from '@/utils/connect'
 import Image from 'next/image'
 import React from 'react'
 
@@ -9,9 +10,13 @@ const getData = async (slug) => {
 
     if(!res.ok){
         throw new Error("failed")
+    }else{
+        await prisma.post.update({
+            where: {slug},
+            data: {views: {increment:1}}
+        })
+        return res.json()
     }
-    
-    return res.json()
 }
 
 
@@ -20,7 +25,7 @@ const singlePage = async ({params}) => {
     const {slug} = params
 
     const data = await getData(slug)
-    console.log(data?.user)
+    console.log(data)
   return (
         <div className='p-4 md:px-20 xl:px-40 flex flex-col'>
         <div className='h-[80vh] md:h-[50vh] lg:h-[45vh] flex flex-col gap-7 md:flex-row'>
