@@ -7,13 +7,11 @@ import { NextResponse } from "next/server"
 export const GET = async (req,{params}) => { 
 
    const {slug} = params
-   console.log(post)
     try{
-        const post = await prisma.post.update({
+        const post = await prisma.post.findUnique({
             where: {slug},
             include: {user: true}
         }) 
-        console.log(post)
         return new NextResponse(JSON.stringify(post,{status:200}))
     }catch(err){
         console.log(err)

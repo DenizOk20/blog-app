@@ -25,7 +25,6 @@ const singlePage = async ({params}) => {
     const {slug} = params
 
     const data = await getData(slug)
-    console.log(data)
   return (
         <div className='p-4 md:px-20 xl:px-40 flex flex-col'>
         <div className='h-[80vh] md:h-[50vh] lg:h-[45vh] flex flex-col gap-7 md:flex-row'>
@@ -52,7 +51,7 @@ const singlePage = async ({params}) => {
                     <Comments postSlug={slug}/>
                  </div>
             </div>
-            <Menu/>
+            <Menu />
         </div>
     </div>
   )
