@@ -12,7 +12,7 @@ const Footer = () => {
           <Image alt='logo' src="/navLogo.png" width={64} height={64} className='h-12 w-12 rounded-full'/>
           <h1 className='p-4 font-bold'>denizblog</h1>
         </div>
-        <p className='font-light md:text-left md:pr-10'>Siz de denizblog ile heyecanınızı insanlarla paylaşabilirsiniz. İnsanlarla bir şeyler paylaşın ya da eğlenceli hiakyeleri okuyun.</p>
+        <p className='font-light md:text-left md:pr-10'>With denizblog you can share your excitement with people. Share something with people or read fun stories.</p>
         <div className='flex p-3 justify-center md:justify-start md:p-0 md:gap-5'>
             { social.map(item => (
                 <Link key={item.id} href={item.url} className='px-2 md:p-0'>
