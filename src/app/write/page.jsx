@@ -125,13 +125,13 @@ const WritePage = () => {
           <option value="Culture">culture</option>
         </select>
         {open && (
-          <div className="absolute flex gap-3 left-12 z-50 w-full">
+          <div className="absolute flex gap-3 left-12 z-10 md:w-32">
             <input
               type="file"
               name="image"
               id="image"
               onChange={(e) => setFile(e.target.files[0])}
-              style={{ display: "none" }}
+              style={{ display:"none"}}
             />
             <button
               className="flex items-center justify-center w-6 h-6 md:w-8 md:h-8 border-2 

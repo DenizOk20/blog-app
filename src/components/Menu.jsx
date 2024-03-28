@@ -1,12 +1,9 @@
-import categories from "@/datas/categories";
-import popular from "@/datas/mostPopular";
 import prisma from "@/utils/connect";
 import Image from "next/image";
 import Link from "next/link";
 
 const getData = async (slug) => {
   const popularPosts = await prisma.post.findMany({
-    where: { slug },
     orderBy: {
       views: "desc",
     },
@@ -29,8 +26,12 @@ const getCatData = async () => {
 };
 
 const Menu = async () => {
+
+
   const data = await getData();
   const catData = await getCatData();
+
+
 
   return (
     <div className="lg:w-1/3 p-4 flex flex-col gap-8">

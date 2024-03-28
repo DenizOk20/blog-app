@@ -36,8 +36,8 @@ const NavMenu = () => {
           </div>
             <div className='flex flex-col text-center gap-8'>
               <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/">Home</Link>
-              <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/">Contact</Link>
-              <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/">About</Link>
+              <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/contact">Contact</Link>
+              <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/about">About</Link>
               {status === "unauthenticated" ? (<Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/login">Login</Link>) :
              ( <div className='flex flex-col gap-8'>
                     <Link onClick={() => setOpen(false)} className='text-xl font-bold text-fuchsia-100' href="/write">Write</Link>

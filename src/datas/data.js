@@ -1,22 +1,22 @@
 const social = [
     {
         id:1,
-        url: '',
-        img: '/facebook.png',
+        url: 'https://www.linkedin.com/in/deniz-%C3%B6k-9410a323a/',
+        img: '/linkedin.png',
     },
     {
         id:2,
-        url: '',
+        url: 'https://www.instagram.com/denizok1812/',
         img: '/instagram.png',
     },
     {
         id:3,
-        url: '',
-        img: '/tiktok.png',
+        url: 'https://github.com/DenizOk20',
+        img: '/github.png',
     },
     {
         id:4,
-        url: '',
+        url: 'https://www.youtube.com/channel/UCGwhaetlmWhXHybx3WEiyYg',
         img: '/youtube.png',
     }
 ]

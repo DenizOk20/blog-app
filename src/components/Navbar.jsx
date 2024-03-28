@@ -4,12 +4,10 @@ import Link from 'next/link'
 import React from 'react'
 import NavMenu from './NavMenu'
 import ThemeColor from './ThemeColor'
-import { signOut } from 'next-auth/react'
-import Logout from './Logout'
 import UserStatus from './UserStatus'
 
 const Navbar = () => {
-    const user = "true"
+
   return (
     <div className='h-12 flex p-4 justify-between items-center md:px-20 xl:px-40 border-b-2 border-b-fuchsia-100'>
         <div className='hidden md:flex p-2'>

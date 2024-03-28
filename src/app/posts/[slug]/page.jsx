@@ -1,6 +1,5 @@
 import Comments from '@/components/Comments'
 import Menu from '@/components/Menu'
-import ReadMore from '@/components/ReadMore'
 import prisma from '@/utils/connect'
 import Image from 'next/image'
 import React from 'react'
@@ -15,8 +14,8 @@ const getData = async (slug) => {
             where: {slug},
             data: {views: {increment:1}}
         })
-        return res.json()
     }
+    return res.json()
 }
 
 
